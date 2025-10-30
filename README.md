@@ -1,10 +1,6 @@
 # HISTORY PRICING MODEL
 
-This repository will domonstrate how to price option with history pricing model.
-
-## What is History Pricing Model?
-
-Instead of using Heston model with Monte Carlo Simulation to determine the probability of an assets to move to some price using 'historical collected/calculated volatility', this model will used historical data directly to determine that probability.
+This repository prices options directly from empirical market data instead of simulated paths (e.g., Heston/Monte Carlo). It estimates the payoff using historical return distributions, lower compute cost, and reduced model misspecification risk.
 
 ## Assumptions
 
@@ -14,11 +10,20 @@ Instead of using Heston model with Monte Carlo Simulation to determine the proba
 ## Model Iteration 1
 
 - use the full historical data to calculate the probability of an assets to move to some price and price option
-- price option still a bit off from the actual price
+- The predicted option price is still a bit off from the actual price
+
+## Model Iteration 2
+
+- Refine the drift estimation using historical data
+- Enforce the martingale condition to ensure the model is consistent with the market data
 
 ## TODO
 
 - [x] Fetch price history data from yahoo finance API
 - [x] Calculate probability of an assets to move to some price using historical data
-- [x] Price option using history pricing model
+- [ ] Iteration 1
+  - [x] Price option using history pricing model
+- [ ] Iteration 2
+  - [ ] Refine the drift estimation using historical data
+  - [ ] Enforce the martingale condition to ensure the model is consistent with the market data
 - [ ] Compare the result with Heston model
