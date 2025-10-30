@@ -13,7 +13,7 @@ Instead of using Heston model with Monte Carlo Simulation to determine the proba
 
 ## TODO
 
-- [ ] Fetch price history data from yahoo finance API
+- [x] Fetch price history data from yahoo finance API
 - [ ] Calculate probability of an assets to move to some price using historical data
 - [ ] Price option using history pricing model
 - [ ] Compare the result with Heston model
