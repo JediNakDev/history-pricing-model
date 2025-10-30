@@ -3,7 +3,7 @@ import pandas as pd
 
 def calc_percent_change(price_df: pd.DataFrame) -> pd.Series:
     print("START CALCULATING PERCENT CHANGE")
-    return price_df["Close"].pct_change() * 100
+    return price_df["Close"].pct_change()
 
 
 if __name__ == "__main__":
