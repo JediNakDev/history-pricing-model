@@ -1,4 +1,4 @@
-from fetch_price import fetch_price
+from fetch_price import fetch_price, fetch_price_timeframe
 from calc_percent_change import calc_percent_change
 from price_option import price_option
 from risk_free_rate import apply_risk_free_rate
@@ -9,6 +9,7 @@ def historical_option_price(
     strike_price: float,
     time_to_maturity_days: int,
     option_type: str = "call",
+    time_frame: str = None,
 ):
     if option_type not in ["call", "put"]:
         raise ValueError("option_type must be 'call' or 'put'")
@@ -17,7 +18,13 @@ def historical_option_price(
     print(f"SYMBOL: {symbol}")
     print(f"STRIKE PRICE: {strike_price}")
     print(f"TIME TO MATURITY: {time_to_maturity_days} (DAYS)")
-    price_df = fetch_price(symbol, interval=f"{time_to_maturity_days}d")
+    print(f"OPTION TYPE: {option_type}")
+    if time_frame:
+        print(f"TIME FRAME: {time_frame}")
+        price_df = fetch_price_timeframe(symbol, time_frame)
+    else:
+        price_df = fetch_price(symbol, interval=f"{time_to_maturity_days}d")
+
     current_price = price_df["Close"].iloc[-1]
     percent_change_series = calc_percent_change(price_df)
     percent_strike_price = (strike_price - current_price) / current_price
