@@ -26,5 +26,5 @@ This repository prices options directly from empirical market data instead of si
 - [ ] Iteration 1.1
   - [ ] Test multiple time frames
   - [ ] Change the data time frame to see if it affects the result
-  - [ ] Account for risk-free rate in the option pricing formula
+  - [x] Account for risk-free rate in the option pricing formula
 - [ ] Compare the result with Heston model
