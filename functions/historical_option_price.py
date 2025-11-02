@@ -9,7 +9,7 @@ def historical_option_price(
     strike_price: float,
     time_to_maturity_days: int,
     option_type: str = "call",
-    time_frame: str = None,
+    timeframe: str = None,
 ):
     if option_type not in ["call", "put"]:
         raise ValueError("option_type must be 'call' or 'put'")
@@ -19,11 +19,11 @@ def historical_option_price(
     print(f"STRIKE PRICE: {strike_price}")
     print(f"TIME TO MATURITY: {time_to_maturity_days} (DAYS)")
     print(f"OPTION TYPE: {option_type}")
-    if time_frame:
-        print(f"TIME FRAME: {time_frame}")
-        price_df = fetch_price_timeframe(symbol, time_frame)
+    if timeframe:
+        print(f"TIME FRAME: {timeframe}")
+        price_df = fetch_price_timeframe(symbol, timeframe)
     else:
-        price_df = fetch_price(symbol, interval=f"{time_to_maturity_days}d")
+        price_df = fetch_price(symbol)
 
     current_price = price_df["Close"].iloc[-1]
     percent_change_series = calc_percent_change(price_df)
