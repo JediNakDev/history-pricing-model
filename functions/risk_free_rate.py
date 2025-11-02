@@ -1,3 +1,4 @@
+from numpy import e
 import yfinance as yf
 
 
@@ -11,7 +12,7 @@ def fetch_risk_free_rate() -> float:
 def apply_risk_free_rate(
     price: float, days: int, risk_free_rate: float = None
 ) -> float:
+    time_in_years = days / 365
     if risk_free_rate is None:
         risk_free_rate = fetch_risk_free_rate()
-    yield_to_maturity = price * risk_free_rate * (days / 365)
-    return price - yield_to_maturity
+    return price * e ** (-risk_free_rate * time_in_years)
