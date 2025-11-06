@@ -27,13 +27,9 @@ def historical_option_price(
 
     current_price = price_df["Close"].iloc[-1]
     percent_change_series = calc_percent_change(price_df)
-    percent_strike_price = (strike_price - current_price) / current_price
-    expected_payoff = price_option(
-        percent_change_series, percent_strike_price, option_type
-    )
-    option_fair_price = apply_risk_free_rate(
-        expected_payoff * current_price, time_to_maturity_days
-    )
+    price_at_maturity = current_price * percent_change_series
+    expected_payoff = price_option(price_at_maturity, strike_price, option_type)
+    option_fair_price = apply_risk_free_rate(expected_payoff, time_to_maturity_days)
 
     return option_fair_price
 

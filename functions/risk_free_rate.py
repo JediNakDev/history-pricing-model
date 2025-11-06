@@ -3,7 +3,6 @@ import yfinance as yf
 
 
 def fetch_risk_free_rate() -> float:
-    """Fetch 3-month Treasury bill yield from Yahoo Finance"""
     ticker = yf.Ticker("^IRX")  # 3-month Treasury bill
     data = ticker.history(period="1d")
     return data["Close"].iloc[-1] / 100  # Convert percentage to decimal
