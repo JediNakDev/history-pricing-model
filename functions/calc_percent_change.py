@@ -1,9 +1,9 @@
 import pandas as pd
 
 
-def calc_percent_change(price_df: pd.DataFrame) -> pd.Series:
+def calc_percent_change(price_df: pd.DataFrame, days: int = 1) -> pd.Series:
     print("START CALCULATING PERCENT CHANGE")
-    return price_df["Close"].pct_change()
+    return price_df["Close"].pct_change(periods=days)
 
 
 if __name__ == "__main__":
